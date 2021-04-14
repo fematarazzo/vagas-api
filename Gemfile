@@ -65,3 +65,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Pundit gem
 gem 'pundit'
+
+# Nokogiri for scrapping
+gem 'nokogiri'
+
+# HTTParty for opening url
+gem 'httparty'

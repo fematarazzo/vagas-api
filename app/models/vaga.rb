@@ -1,0 +1,2 @@
+class Vaga < ApplicationRecord
+end

@@ -1,3 +1,3 @@
 class Vaga < ApplicationRecord
-  validates :título, :empresa, :nível, :descrição, :url, presence: true
+  validates :título, :empresa, :nível, :descrição, :local, :url, presence: true
 end

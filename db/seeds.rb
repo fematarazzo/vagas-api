@@ -3,7 +3,7 @@ require 'httparty'
 require 'byebug'
 
 puts "Limpando base..."
-Vaga.destroy.all
+Vaga.destroy_all
 
 def scraper
   api_token = ENV['API_TOKEN']
@@ -11,6 +11,7 @@ def scraper
   url = CGI.escape "https://www.vagas.com.br/vagas-de-#{area_vaga}"
   unparsed_url = HTTParty.get('https://api.scraperbox.com/scrape?token=' + api_token + '&url=' + url + '&javascript_enabled=true')
   parsed_url = Nokogiri::HTML(unparsed_url)
+  byebug
   vagas = []
   lista_vagas = parsed_url.css('li.vaga') #lista de vagas (40)
   page = 1

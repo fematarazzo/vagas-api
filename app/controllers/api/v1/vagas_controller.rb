@@ -4,7 +4,20 @@ class Api::V1::VagasController < Api::V1::BaseController
   before_action :set_vaga, only: [ :show, :update, :destroy ]
 
   def index
-    @vagas = policy_scope(Vaga)
+    if params[:search]
+      if params[:search][:título]
+        @vagas = policy_scope(Vaga).where('título LIKE ? ', '%' + params[:search][:título] + '%')
+      elsif params[:search][:empresa]
+        @vagas = policy_scope(Vaga).where('título LIKE ? ', '%' + params[:search][:empresa] + '%')
+      elsif params[:search][:nível]
+        @vagas = policy_scope(Vaga).where('título LIKE ? ', '%' + params[:search][:nível] + '%')
+      elsif params[:search][:descrição]
+        @vagas = policy_scope(Vaga).where('título LIKE ? ', '%' + params[:search][:descrição] + '%')
+      elsif params[:search][:local]
+        @vagas = policy_scope(Vaga).where('título LIKE ? ', '%' + params[:search][:local] + '%')
+      end
+    end
+    
   end
 
   def show

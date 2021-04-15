@@ -6,17 +6,16 @@
           <h1>VAGAS.com API</h1>
         </div>
         <div class="col-4">
-          <%= link_to "Acesse aqui", api_v1_vagas_path, class:"btn btn-primary mt-1"%>
+          <%= link_to "Acesse a API", api_v1_vagas_path, class:"btn btn-primary mt-1"%>
         </div>
       </div>
       <h5>Uma API para encontrar vagas do site
         <a href="https://www.vagas.com.br">VAGAS.com</a>
-        classificados em:
       </h5>
       <ul>
         <li>
           <strong>Título:</strong>
-          É o título ou cargo da vaga
+          Título ou cargo da vaga
         </li>
         <li>
           <strong>Empresa:</strong>
@@ -39,6 +38,19 @@
           Url para ver detalhes da vaga
         </li>
       </ul>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-6">
+      <h3>Busque diretamente por aqui:</h3>
+      <%= simple_form_for :search, url: api_v1_vagas_path, method: :get do |f| %>
+        <%= f.input :título, required: false %>
+        <%= f.input :empresa, required: false %>
+        <%= f.input :nível, required: false %>
+        <%= f.input :descrição, required: false %>
+        <%= f.input :local, required: false %>
+        <%= f.submit "Pesquisar", class:"btn btn-warning w-100" %>
+      <% end %>
     </div>
   </div>
 </div>

@@ -6,6 +6,7 @@ class CreateVagas < ActiveRecord::Migration[6.1]
       t.string :nível
       t.text :descrição
       t.string :url
+      t.references :user, null: false, foreign_key: true
 
       t.timestamps
     end

@@ -71,3 +71,5 @@ gem 'nokogiri'
 
 # HTTParty for opening url
 gem 'httparty'
+
+gem 'simple_token_authentication'

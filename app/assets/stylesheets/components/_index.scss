@@ -2,3 +2,9 @@
 @import "alert";
 @import "avatar";
 @import "navbar";
+
+
+body {
+  background-image: linear-gradient(to right, #8adbb7 , $green);
+  color: $light-gray;
+}

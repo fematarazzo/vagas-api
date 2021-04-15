@@ -1,5 +1,6 @@
 class Api::V1::VagasController < Api::V1::BaseController
   acts_as_token_authentication_handler_for User, except: [ :index, :show ]
+  skip_before_action :authenticate_user!, only: [ :index, :show ], raise: false
   before_action :set_vaga, only: [ :show, :update, :destroy ]
 
   def index

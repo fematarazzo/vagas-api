@@ -1,2 +1,44 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-7 mt-5 ml-5">
+      <div class="row justify-content-between">
+        <div class="col-6">
+          <h1>VAGAS.com API</h1>
+        </div>
+        <div class="col-6">
+          <%= link_to "Acesse aqui", api_v1_vagas_path, class:"btn btn-primary mt-1"%>
+        </div>
+      </div>
+      <h5>Uma API para encontrar vagas do site
+        <a href="https://www.vagas.com.br">VAGAS.com</a>
+        classificados em:
+      </h5>
+      <ul>
+        <li>
+          <strong>Título:</strong>
+          É o título ou cargo da vaga
+        </li>
+        <li>
+          <strong>Empresa:</strong>
+          Quem está anunciando a vaga
+        </li>
+        <li>
+          <strong>Nível:</strong>
+          Nível técnico exigido
+        </li>
+        <li>
+          <strong>Descrição:</strong>
+          Breve descrição, muitas vezes com pré-requisitos
+        </li>
+        <li>
+          <strong>Local:</strong>
+          Local da vaga
+        </li>
+        <li>
+          <strong>URL:</strong>
+          Url para ver detalhes da vaga
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

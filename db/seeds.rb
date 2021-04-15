@@ -34,7 +34,8 @@ while page <= last_page
       nível: vaga.css('div.nivelQtdVagas').text.strip!,
       descrição:  vaga.css('div.detalhes').text.strip!,
       local: vaga.css('span.vaga-local').text.strip!,
-      url: "https://www.vagas.com.br#{vaga.css('a')[0].attributes["href"].value}"
+      url: "https://www.vagas.com.br#{vaga.css('a')[0].attributes["href"].value}",
+      user_id: User.first.id
     )
     puts "...salvando..."
     vaga.save!

@@ -1,15 +1,17 @@
 require 'nokogiri'
-require 'httparty'
-require 'byebug'
+require 'open-uri'
 
 puts "Limpando base..."
 Vaga.destroy_all
 
-api_token = ENV['API_TOKEN']
+# api_token = ENV['API_TOKEN']
 
-url = CGI.escape "https://www.vagas.com.br/vagas-de-"
+#  url = CGI.escape "https://www.vagas.com.br/vagas-de-"
 
-unparsed_url = HTTParty.get('https://api.scraperbox.com/scrape?token=' + api_token + '&url=' + url + '&javascript_enabled=true')
+url = "https://www.vagas.com.br/vagas-de-"
+# unparsed_url = URI.open('https://api.scraperbox.com/scrape?token=' + api_token + '&url=' + url + '&javascript_enabled=true').read
+
+unparsed_url = URI.open(url).read
 parsed_url = Nokogiri::HTML(unparsed_url)
 
 lista_vagas = parsed_url.css('li.vaga') #lista de vagas (40)
@@ -21,8 +23,10 @@ last_page = ( total.to_f / per_page.to_f ).round # contagem de paginas total
 while page <= last_page
   puts "Page: #{page}"
   puts ''
-  pagination_url = CGI.escape "https://www.vagas.com.br/vagas-de-?pagina=#{page}&q="
-  pagination_unparsed_url = HTTParty.get('https://api.scraperbox.com/scrape?token=' + api_token + '&url=' + pagination_url + '&javascript_enabled=true')
+  # pagination_url = CGI.escape "https://www.vagas.com.br/vagas-de-?pagina=#{page}&q="
+  pagination_url = "https://www.vagas.com.br/vagas-de-?pagina=#{page}&q="
+  # pagination_unparsed_url = URI.open('https://api.scraperbox.com/scrape?token=' + api_token + '&url=' + pagination_url + '&javascript_enabled=true').read
+  pagination_unparsed_url = URI.open(pagination_url).read
   pagination_parsed_url = Nokogiri::HTML(pagination_unparsed_url)
   pagination_lista_vagas = pagination_parsed_url.css('li.vaga')
 

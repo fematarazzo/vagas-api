@@ -69,7 +69,8 @@ gem 'pundit'
 # Nokogiri for scrapping
 gem 'nokogiri'
 
-# HTTParty for opening url
-gem 'httparty'
+# Open-URI for opening url
+gem 'open-uri'
 
+# For authentication
 gem 'simple_token_authentication'

@@ -4,20 +4,30 @@ class Api::V1::VagasController < Api::V1::BaseController
   before_action :set_vaga, only: [ :show, :update, :destroy ]
 
   def index
-    if params[:search]
-      if params[:search][:título]
-        @vagas = policy_scope(Vaga).where('título LIKE ? ', '%' + params[:search][:título] + '%')
-      elsif params[:search][:empresa]
-        @vagas = policy_scope(Vaga).where('título LIKE ? ', '%' + params[:search][:empresa] + '%')
-      elsif params[:search][:nível]
-        @vagas = policy_scope(Vaga).where('título LIKE ? ', '%' + params[:search][:nível] + '%')
-      elsif params[:search][:descrição]
-        @vagas = policy_scope(Vaga).where('título LIKE ? ', '%' + params[:search][:descrição] + '%')
-      elsif params[:search][:local]
-        @vagas = policy_scope(Vaga).where('título LIKE ? ', '%' + params[:search][:local] + '%')
-      end
+    # If no field is used, return all
+    if params[:search][:título] == "" && params[:search][:empresa] == "" && params[:search][:nível] == "" && params[:search][:descrição] == "" && params[:search][:local] == ""
+      @vagas = policy_scope(Vaga)
+
+    # If only título
+    elsif params[:search][:título] && params[:search][:empresa] == "" && params[:search][:nível] == "" && params[:search][:descrição] == "" && params[:search][:local] == ""
+      @vagas = policy_scope(Vaga).where('título LIKE ? ', '%' + params[:search][:título] + '%')
+
+    # If only empresa
+    elsif params[:search][:empresa] && params[:search][:título] == "" && params[:search][:nível] == "" && params[:search][:descrição] == "" && params[:search][:local] == ""
+      @vagas = policy_scope(Vaga).where('empresa LIKE ? ', '%' + params[:search][:empresa] + '%')
+
+    # If only nível
+    elsif params[:search][:nível] && params[:search][:título] == "" && params[:search][:empresa] == "" && params[:search][:descrição] == "" && params[:search][:local] == ""
+      @vagas = policy_scope(Vaga).where('nível LIKE ? ', '%' + params[:search][:nível] + '%')
+
+    # If only descrição
+    elsif params[:search][:descrição] && params[:search][:título] == "" && params[:search][:nível] == "" && params[:search][:título] == "" && params[:search][:local] == ""
+      @vagas = policy_scope(Vaga).where('descrição LIKE ? ', '%' + params[:search][:descrição] + '%')
+
+    # If only local
+    elsif params[:search][:local] && params[:search][:título] == "" && params[:search][:nível] == "" && params[:search][:título] == "" && params[:search][:descrição] == ""
+      @vagas = policy_scope(Vaga).where('local LIKE ? ', '%' + params[:search][:local] + '%')
     end
-    
   end
 
   def show

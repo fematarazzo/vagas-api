@@ -5,6 +5,10 @@
 
 
 body {
-  background-image: linear-gradient(to right, #8adbb7 , $green);
+  background-image: linear-gradient(to right, #70dead , #00cf72);
   color: white;
+}
+
+a:hover {
+  text-decoration: none;
 }

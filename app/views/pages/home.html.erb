@@ -1,7 +1,7 @@
-<div class="container mt-5">
+<div class="container my-5">
   <div class="row justify-content-center">
-    <div class="col-12 col-lg-6 mt-5">
-      <div class="row justify-content-between">
+    <div class="col-12 col-lg-6">
+      <div class="row justify-content-between my-3">
         <div class="col-8">
           <h1>VAGAS.com API</h1>
         </div>
@@ -42,7 +42,7 @@
   </div>
   <div class="row justify-content-center">
     <div class="col-12 col-lg-6">
-      <h3>Busque diretamente por aqui:</h3>
+      <h3>Busque diretamente aqui:</h3>
       <%= simple_form_for :search, url: api_v1_vagas_path, method: :get do |f| %>
         <%= f.input :título, required: false %>
         <%= f.input :empresa, required: false %>
